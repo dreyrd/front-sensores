@@ -4,6 +4,10 @@ export default {
   "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      colors: {
+        azulLink: '#0095FF',
+        vermelhoBotao: '#E81D14'
+      }
     },
   },
   plugins: [],
