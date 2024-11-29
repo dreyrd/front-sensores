@@ -28,8 +28,7 @@ export function Login() {
         if(token){
             try{
                 localStorage.setItem('token', token)
-
-                
+                localStorage.setItem('login', login)
 
                 navigate('/home')
             }
@@ -37,7 +36,6 @@ export function Login() {
                 console.log(error)
             }
         }
-        console.log(token)
     }, [token])
 
     const mudarCard = () => {

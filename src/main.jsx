@@ -5,6 +5,8 @@ import App from './App.jsx'
 import { Login } from './pages/login.jsx'
 import { Home } from './pages/home.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import '@fontsource/roboto';
+
 
 const router = createBrowserRouter([
 
