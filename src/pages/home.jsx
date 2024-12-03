@@ -3,7 +3,9 @@ import logo from '../../public/logo.svg'
 import sair from '../../public/img/sair.png'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import { SobreNos } from '../components/sobreNos';
+import { SobreNos } from './sobreNos';
+import { Sensores } from './sensores';
+import { TabelaSensores } from './tabelaSensores';
 
 
 
@@ -12,7 +14,7 @@ export function Home(){
 
     const navigate = useNavigate();
 
-    const [tela, setTela] = useState('sobreNos')
+    const [tela, setTela] = useState('dashboard')
 
     const deslogar = () => {
         localStorage.removeItem('token')
@@ -30,10 +32,10 @@ export function Home(){
                 </div>
 
                 <ul className='mt-4'>
-                    <li className={`itens-menu ${tela === 'sobreNos'? 'bg-vermelhoBotao text-white rounded-l-full ml-10' : 'itens-menu-hover'}`} onClick={() => {setTela('sobreNos')}}>Sobre nos</li>
                     <li className={`itens-menu ${tela === 'dashboard'? 'bg-vermelhoBotao text-white rounded-l-full ml-10' : 'itens-menu-hover'}`} onClick={() => {setTela('dashboard')}}>Dashboard</li>
                     <li className={`itens-menu ${tela === 'sensores'? 'bg-vermelhoBotao text-white rounded-l-full ml-10' : 'itens-menu-hover'}`} onClick={() => {setTela('sensores')}}>Sensores</li>
                     <li className={`itens-menu ${tela === 'tabelaSensores'? 'bg-vermelhoBotao text-white rounded-l-full ml-10' : 'itens-menu-hover'}`} onClick={() => {setTela('tabelaSensores')}}>Tabela sensores</li>
+                    <li className={`itens-menu ${tela === 'sobreNos'? 'bg-vermelhoBotao text-white rounded-l-full ml-10' : 'itens-menu-hover'}`} onClick={() => {setTela('sobreNos')}}>Sobre nós</li>
                 </ul>
 
                 <div className='flex items-center w-full h-12 bg-neutral-300 mt-auto'>
@@ -51,8 +53,8 @@ export function Home(){
 
                 {tela === 'sobreNos'? <SobreNos /> : null}
                 {tela === 'dashboard'? <p>Dashboard</p> : null}
-                {tela === 'sensores'? <p>ola</p> : null}
-                {tela === 'tabelaSensores'? <p>Tabela sensores</p> : null}
+                {tela === 'sensores'? <Sensores /> : null}
+                {tela === 'tabelaSensores'? <TabelaSensores /> : null}
             </section>
 
         </div>
