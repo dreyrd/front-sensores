@@ -10,7 +10,14 @@ export function TabelaSensores(){
     const [token, setToken] = useState(localStorage.getItem('token'))
     const [sensores, setSensores] = useState([])
 
-    
+    const [sensorId, setSensorId] = useState('')
+    const [sensorLocalizacao, setSensorLocalizacao] = useState('')
+    const [sensorResponsavel, setSensorResponsavel] = useState('')
+    const [sensorTipo, setSensorTipo] = useState('')
+
+    const detalhesSensores = (id) => {
+        setSensorId(id)
+    }
 
     useEffect(() => {
         const fetchSensores = async () => {
@@ -68,12 +75,14 @@ export function TabelaSensores(){
 
                 {sensores.map((sensor) => (
 
-                    <RowCard key={sensor.id} id_sensor={sensor.id} localizacao={sensor.localizacao} responsavel={sensor.responsavel} tipo={sensor.tipo} />
+                    <RowCard key={sensor.id} id_sensor={sensor.id} localizacao={sensor.localizacao} responsavel={sensor.responsavel} tipo={sensor.tipo} funcao={() => detalhesSensores(sensor.id)} />
                 ))}
 
             </div>
 
             <div className="w-3/12 h-full bg-red-300">
+
+                {sensorId !== ''? <p>ID: {sensorId}</p> : null }
 
             </div>
 
