@@ -14,9 +14,22 @@ export function TabelaSensores(){
     const [sensorLocalizacao, setSensorLocalizacao] = useState('')
     const [sensorResponsavel, setSensorResponsavel] = useState('')
     const [sensorTipo, setSensorTipo] = useState('')
+    const [sensorLatitude, setSensorLatitude] = useState('')
+    const [sensorLongitude, setSensorLongitude] = useState('')
+    const [sensorStatus, setSensorStatus] = useState('')
+    const [sensorObservacao, setSensorObservacao] = useState('')
 
-    const detalhesSensores = (id) => {
-        setSensorId(id)
+
+    const detalhesSensores = (sensor) => {
+        setSensorId(sensor.id);
+        setSensorLocalizacao(sensor.localizacao);
+        setSensorResponsavel(sensor.responsavel);
+        setSensorTipo(sensor.tipo);
+        setSensorLatitude(sensor.latitude);
+        setSensorLongitude(sensor.longitude);
+        setSensorStatus(sensor.status_operacional);
+        setSensorObservacao(sensor.observacao);
+
     }
 
     useEffect(() => {
@@ -75,14 +88,21 @@ export function TabelaSensores(){
 
                 {sensores.map((sensor) => (
 
-                    <RowCard key={sensor.id} id_sensor={sensor.id} localizacao={sensor.localizacao} responsavel={sensor.responsavel} tipo={sensor.tipo} funcao={() => detalhesSensores(sensor.id)} />
+                    <RowCard key={sensor.id} id_sensor={sensor.id} localizacao={sensor.localizacao} responsavel={sensor.responsavel} tipo={sensor.tipo} funcao={() => detalhesSensores(sensor)} />
                 ))}
 
             </div>
 
-            <div className="w-3/12 h-full bg-red-300">
+            <div className="w-3/12 h-full bg-red-300 text-lg">
 
                 {sensorId !== ''? <p>ID: {sensorId}</p> : null }
+                {sensorLocalizacao !== ''? <p>Localização: {sensorLocalizacao}</p> : null }
+                {sensorResponsavel !== ''? <p>Responsável: {sensorResponsavel}</p> : null }
+                {sensorTipo !== ''? <p>Tipo: {sensorTipo}</p> : null}
+                {sensorLatitude !== ''? <p>Latitude: {sensorLatitude}</p> : null}
+                {sensorLongitude !== ''? <p>Longitude: {sensorLongitude}</p> : null}
+                {sensorStatus !== ''? <p>Status: {sensorStatus}</p> : null}
+                {sensorObservacao !== ''? <p>Observação: {sensorObservacao}</p> : null}
 
             </div>
 
