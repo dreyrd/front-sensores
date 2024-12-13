@@ -6,6 +6,7 @@ import { useState } from 'react';
 import { SobreNos } from './sobreNos';
 import { Sensores } from './sensores';
 import { TabelaSensores } from './tabelaSensores';
+import { Dashboard } from './dashboard';
 
 
 
@@ -52,7 +53,7 @@ export function Home(){
             <section className='h-screen w-5/6'>
 
                 {tela === 'sobreNos'? <SobreNos /> : null}
-                {tela === 'dashboard'? <p>Dashboard</p> : null}
+                {tela === 'dashboard'? <Dashboard /> : null}
                 {tela === 'sensores'? <Sensores /> : null}
                 {tela === 'tabelaSensores'? <TabelaSensores /> : null}
             </section>

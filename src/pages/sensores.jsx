@@ -135,7 +135,7 @@ export function Sensores(){
 
                 </select>
 
-                <p className={`{erro? 'text-vermelhoBotao' : 'text-green-500'}`}>{erro? erro : sucesso? sucesso : ''}</p>
+                <p className={`${erro? 'text-vermelhoBotao' : 'text-green-500'}`}>{erro? erro : sucesso? sucesso : ''}</p>
 
                 <input type="submit" value="Cadastrar" className='w-full py-2 bg-green-500 rounded text-white cursor-pointer' onClick={cadastrarSensor} />
 

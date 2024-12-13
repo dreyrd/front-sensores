@@ -3,6 +3,7 @@ import { useState } from "react"
 import { RowCard } from "../components/rowCard"
 import { useEffect } from "react"
 import axios from "axios"
+import { Input } from "../components/input"
 
 
 export function TabelaSensores(){
@@ -93,7 +94,7 @@ export function TabelaSensores(){
 
             </div>
 
-            <div className="w-3/12 h-full bg-red-300 text-lg">
+            <div className="w-3/12 h-full bg-red-300 text-lg px-8">
 
                 {sensorId !== ''? <p>ID: {sensorId}</p> : null }
                 {sensorLocalizacao !== ''? <p>Localização: {sensorLocalizacao}</p> : null }
@@ -103,6 +104,8 @@ export function TabelaSensores(){
                 {sensorLongitude !== ''? <p>Longitude: {sensorLongitude}</p> : null}
                 {sensorStatus !== ''? <p>Status: {sensorStatus}</p> : null}
                 {sensorObservacao !== ''? <p>Observação: {sensorObservacao}</p> : null}
+
+                {sensorId? <Input nome="ID" type="text" habilitar={true} value={sensorId} onChange={(e) => setSensorId(e.target.value)} className="w-full"/> : null}
 
             </div>
 
