@@ -1,9 +1,13 @@
 import React from 'react';
 import { Input } from '../components/input';
+import { PopUp } from '../components/popUp';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 export function Sensores(){
+
+    const navigate = useNavigate();
 
     const [token, setToken] = useState(localStorage.getItem('token'))
     const [erro, setErro] = useState('')
@@ -20,6 +24,9 @@ export function Sensores(){
     const [sensorTipo, setSensorTipo] = useState(1)
 
     const [tiposSensores, setTiposSensores] = useState([])
+
+    const [abrirPopUp, setAbrirPopUp] = useState(false)
+
 
 
     useEffect(() => {
@@ -38,7 +45,9 @@ export function Sensores(){
 
             } catch (error) {
 
-            console.error("Erro ao buscar tipo de sensores:", error);
+                console.error("Erro ao buscar tipo de sensores:", error);
+
+                setAbrirPopUp(true);
 
             }
         };
@@ -46,6 +55,14 @@ export function Sensores(){
         fetchSensores();
     
     }, [token]);
+
+    const fecharPopUp = () => {
+        
+        setAbrirPopUp(false);
+
+        navigate('/login');
+
+    }
 
 
     const checarCampos = () => {
@@ -100,6 +117,8 @@ export function Sensores(){
             } catch (error) {
 
                 setErro('Erro ao cadastrar sensor: ' + error)
+
+                setAbrirPopUp(true);
             };
         }
         else{
@@ -112,6 +131,16 @@ export function Sensores(){
 
     return(
         <div className="flex justify-center items-center">
+
+
+            <PopUp abrir={abrirPopUp} fechar={fecharPopUp} >
+
+                <div className="flex justify-center items-center w-auto h-auto px-10 pb-6 pt-2">
+                    <h1 className="text-xl">Seu token expirou</h1>
+                </div>
+
+            </PopUp>
+
 
             <div className="flex flex-col justify-center items-center border-2 border-vermelhoBotao w-1/2 h-auto rounded gap-y-8 p-8">
 
